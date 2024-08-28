@@ -52,7 +52,7 @@ use crate::transaction::transaction_utils::update_remaining_gas;
 use crate::versioned_constants::{EventLimits, VersionedConstants};
 
 pub mod hint_processor;
-mod secp;
+pub mod secp;
 
 #[cfg(test)]
 #[path = "syscalls_test.rs"]
