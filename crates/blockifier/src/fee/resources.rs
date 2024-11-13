@@ -21,7 +21,7 @@ use crate::versioned_constants::{ArchivalDataGasCosts, VersionedConstants};
 pub type TransactionFeeResult<T> = Result<T, TransactionFeeError>;
 
 #[cfg_attr(feature = "transaction_serde", derive(serde::Serialize, serde::Deserialize))]
-#[derive(Default, Clone, Debug, PartialEq)]
+#[derive(Default, Clone, Debug, Eq, PartialEq)]
 pub struct TransactionResources {
     pub starknet_resources: StarknetResources,
     pub computation: ComputationResources,
@@ -53,7 +53,7 @@ impl TransactionResources {
 
 /// Contains all computation resources consumed by a transaction.
 #[cfg_attr(feature = "transaction_serde", derive(serde::Serialize, serde::Deserialize))]
-#[derive(Clone, Debug, Default, PartialEq)]
+#[derive(Clone, Debug, Default, Eq, PartialEq)]
 pub struct ComputationResources {
     pub vm_resources: ExecutionResources,
     pub n_reverted_steps: usize,
@@ -82,7 +82,7 @@ impl ComputationResources {
 
 /// Contains all non-computation Starknet resources consumed by a transaction.
 #[cfg_attr(feature = "transaction_serde", derive(serde::Serialize, serde::Deserialize))]
-#[derive(Clone, Debug, Default, PartialEq)]
+#[derive(Clone, Debug, Default, Eq, PartialEq)]
 pub struct StarknetResources {
     pub archival_data: ArchivalDataResources,
     pub messages: MessageResources,
@@ -140,7 +140,7 @@ impl StarknetResources {
 }
 
 #[cfg_attr(feature = "transaction_serde", derive(serde::Serialize, serde::Deserialize))]
-#[derive(Clone, Debug, Default, PartialEq)]
+#[derive(Clone, Debug, Default, Eq, PartialEq)]
 pub struct StateResources {
     state_changes_for_fee: StateChangesCount,
 }
@@ -174,7 +174,7 @@ impl StateResources {
 }
 
 #[cfg_attr(feature = "transaction_serde", derive(serde::Serialize, serde::Deserialize))]
-#[derive(Clone, Debug, Default, PartialEq)]
+#[derive(Clone, Debug, Default, Eq, PartialEq)]
 pub struct ArchivalDataResources {
     pub event_summary: EventSummary,
     pub calldata_length: usize,
@@ -249,7 +249,7 @@ impl ArchivalDataResources {
 
 /// Contains L1->L2 and L2->L1 message resources.
 #[cfg_attr(feature = "transaction_serde", derive(serde::Serialize, serde::Deserialize))]
-#[derive(Clone, Debug, Default, PartialEq)]
+#[derive(Clone, Debug, Default, Eq, PartialEq)]
 pub struct MessageResources {
     pub l2_to_l1_payload_lengths: Vec<usize>,
     pub message_segment_length: usize,

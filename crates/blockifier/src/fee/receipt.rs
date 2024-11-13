@@ -39,7 +39,7 @@ struct TransactionReceiptParameters<'a> {
 // get passed around together.
 #[cfg_attr(any(test, feature = "testing"), derive(Clone))]
 #[cfg_attr(feature = "transaction_serde", derive(serde::Serialize, serde::Deserialize))]
-#[derive(Default, Debug, PartialEq)]
+#[derive(Default, Debug, Eq, PartialEq)]
 pub struct TransactionReceipt {
     pub fee: Fee,
     pub gas: GasVector,

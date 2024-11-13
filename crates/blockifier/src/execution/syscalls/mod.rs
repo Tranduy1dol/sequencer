@@ -45,7 +45,7 @@ use crate::transaction::account_transaction::is_cairo1;
 use crate::versioned_constants::{EventLimits, VersionedConstants};
 
 pub mod hint_processor;
-mod secp;
+pub mod secp;
 
 #[cfg(test)]
 pub mod syscall_tests;

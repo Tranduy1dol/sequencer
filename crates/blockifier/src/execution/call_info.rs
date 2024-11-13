@@ -63,7 +63,7 @@ pub struct CallExecution {
 }
 
 #[cfg_attr(feature = "transaction_serde", derive(serde::Serialize, serde::Deserialize))]
-#[derive(Clone, Debug, Default, derive_more::AddAssign, PartialEq)]
+#[derive(Clone, Debug, Default, derive_more::AddAssign, Eq, PartialEq)]
 pub struct EventSummary {
     pub n_events: usize,
     pub total_event_keys: u64,
