@@ -17,7 +17,7 @@ pub mod test;
 pub const TRACE_LENGTH_CAP: usize = 15000;
 pub const TRACE_EXTRA_CHARS_SLACK: usize = 100;
 
-enum PreambleType {
+pub enum PreambleType {
     CallContract,
     LibraryCall,
     Constructor,
@@ -34,11 +34,11 @@ impl PreambleType {
 }
 
 pub struct EntryPointErrorFrame {
-    depth: usize,
-    preamble_type: PreambleType,
-    storage_address: ContractAddress,
-    class_hash: ClassHash,
-    selector: Option<EntryPointSelector>,
+    pub depth: usize,
+    pub preamble_type: PreambleType,
+    pub storage_address: ContractAddress,
+    pub class_hash: ClassHash,
+    pub selector: Option<EntryPointSelector>,
 }
 
 impl EntryPointErrorFrame {
@@ -122,7 +122,7 @@ impl From<String> for Frame {
 
 #[derive(Default)]
 pub struct ErrorStack {
-    stack: Vec<Frame>,
+    pub stack: Vec<Frame>,
 }
 
 impl From<ErrorStack> for String {
